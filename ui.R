@@ -294,9 +294,18 @@ shinyUI(
                 width = 12,
                 box(
                   width = NULL,
+                  title = textOutput(
+                    outputId = 'count_text'
+                  ),
                   plotlyOutput(
                     outputId = 'count_plot_2'
-                  )
+                  ),
+                  tags$style(HTML('
+                    .box{
+                    font-size : 16 px;
+                    color: gray;
+                    text-decoration: underline
+                    }'))
                 )
               )
             ),

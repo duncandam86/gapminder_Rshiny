@@ -316,32 +316,34 @@ shinyServer(function(input, output){
     ggplotly(p8, tooltip= c('x','y'))
   })
   
+  output$count_text <- renderText({
+    if(input$count_axis == 'gdpPercap'){
+      text <- 'GDP per Capita'  
+    }
+    if(input$count_axis == 'lifeExp'){
+      text <-'Life Expectancy'
+    }
+    if(input$count_axis == 'pop'){
+      text <- 'Population'
+    }
+    if(input$count_axis == 'gdp'){
+      text <- 'Growth Domestic Product'
+    }
+    text
+  })
+  
   output$count_plot_2 <- renderPlotly({
     
     p9 <- ggplot(data_react_2(), aes(x = year, fill=country, color = country, alpha = 0.6)) +
       geom_point(aes_string(y=input$count_axis)) +
       geom_line(aes_string(y=input$count_axis)) +
       theme(legend.title = element_blank(),
-            axis.title.x = element_blank(), 
+            axis.title = element_blank(),
             panel.background = element_blank(),
             strip.background = element_blank(),
             panel.grid = element_line(colour = 'gray'),
             strip.text.x = element_text(size = rel(1.2))) +
       facet_wrap(~country, nrow = 3) 
-    
-    if(input$count_axis == 'gdpPercap'){
-      p9 <- p9 + ylab('GDP per Capita')  
-    }
-    
-    if(input$count_axis == 'lifeExp'){
-      p9 <- p9 + ylab('Life Expectancy')
-    }
-    if(input$count_axis == 'pop'){
-      p9 <- p9 + ylab('Population')
-    }
-    if(input$count_axis == 'gdp'){
-      p9 <- p9 + ylab('Growth Domestic Product')
-    }
     
     ggplotly(p9, tooltip = c('x','y'))
     

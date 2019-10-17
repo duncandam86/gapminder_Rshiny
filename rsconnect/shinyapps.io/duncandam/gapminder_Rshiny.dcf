@@ -1,0 +1,12 @@
+name: gapminder_Rshiny
+title: gapminder_Rshiny
+username:
+account: duncandam
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1342474
+bundleId: 2508896
+url: https://duncandam.shinyapps.io/gapminder_Rshiny/
+when: 1571325561.01184
+asMultiple: FALSE
+asStatic: FALSE
